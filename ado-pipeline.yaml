@@ -16,7 +16,7 @@ stages:
         steps:
 
           - script: |
-              (echo instance_type = "${{paremeters.instance_type}}") > azure.auto.tfvars
+              (echo instance_type = "${{parameters.instance_type}}") > azure.auto.tfvars
             displayName: "Create tfvars file for EC2 Components"
 
           - task: TerraformInstaller@0
