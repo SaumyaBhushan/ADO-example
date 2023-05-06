@@ -17,7 +17,7 @@ stages:
         steps:
 
           - script: |
-              (echo instance_type = "${{parameters.instance_type}}"
+              (echo instance_type = '${{parameters.instance_type}}'
               echo access_key = '$(access_key)'
               echo secret_key = '$(secret_key)'
               ) > azure.auto.tfvars
