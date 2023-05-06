@@ -3,6 +3,7 @@ parameters:
     type: string 
     default: "t3.micro"
 
+pool: default
 # variables:
 # - group: testing variable
 # - group: Build Variables
