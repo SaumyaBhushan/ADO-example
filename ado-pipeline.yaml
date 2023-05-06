@@ -3,8 +3,8 @@ parameters:
     type: string 
     default: "t3.micro"
 
-variables:
-- group: testing variable
+# variables:
+# - group: testing variable
 # - group: Build Variables
 
 stages:
