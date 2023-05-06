@@ -1,0 +1,42 @@
+parameters:
+  - name: instance_type
+    type: string 
+    default: "t3.micro"
+
+variables:
+- group: testing variable
+# - group: Build Variables
+
+stages:
+  - stage: Deploy_EC2_instance
+    jobs:
+      - job: Deploy_EC2_instance
+        timeoutInMinutes: 10
+
+        steps:
+
+          - script: |
+              echo instance_type = "${{paremeters.instance_type}}" > azure.auto.tfvars
+            displayName: "Create tfvars file for EC2 Components"
+
+          - task: TerraformInstaller@0
+            displayName: "Terraform install v1.1.4"
+            inputs:
+              terraformVersion: "1.1.4"
+
+          - script: |
+              terraform init -upgrade
+            displayName: "Terraform Init"
+
+          - script: |
+              terraform fmt 
+            displayName: "Terraform Format"
+
+          - script: |
+              terraform validate
+            displayName: "Terraform Validate"
+
+          - script: |
+              terraform apply -auto-approve
+            displayName: "Terraform Apply"
+              
