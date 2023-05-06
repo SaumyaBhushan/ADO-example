@@ -3,8 +3,9 @@ parameters:
     type: string 
     default: "t3.micro"
 
-variables:
-- group: testing variable
+pool: default
+# variables:
+# - group: testing variable
 # - group: Build Variables
 
 stages:
@@ -16,7 +17,7 @@ stages:
         steps:
 
           - script: |
-              (echo instance_type = "${{paremeters.instance_type}}") > azure.auto.tfvars
+              (echo instance_type = "${{parameters.instance_type}}") > azure.auto.tfvars
             displayName: "Create tfvars file for EC2 Components"
 
           - task: TerraformInstaller@0
